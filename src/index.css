@@ -20,3 +20,7 @@ code {
   text-align: center;
   background-color: #DCEDC1;
 }
+
+.done {
+  text-decoration: line-through;
+}
