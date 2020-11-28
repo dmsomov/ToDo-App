@@ -11,7 +11,7 @@ const styles = {
     padding: '.5rem 1rem',
     border: '1px solid #ABEDD8',
     borderRadius: '5px',
-    marginBottom: '.5rem',
+    marginTop: '.5rem',
     backgroundColor: '#A8E6CF'
   },
   input: {
