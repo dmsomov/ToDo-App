@@ -3,7 +3,17 @@ import PropTypes from 'prop-types'
 
 const styles = {
   form: {
-    marginBottom: '1rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0 auto',
+    padding: '1rem',
+    backgroundColor: '#61C0BF',
+    width: '60%',
+    borderRadius: '5px'
+  },
+  button: {
+    marginLeft: '1rem'
   }
 }
 
@@ -26,7 +36,7 @@ function AddTodo({ createTodo }) {
   return (
     <form style={styles.form} onSubmit={submitValue}>
       <input value={value} onChange={changeValue} />
-      <button type='submit'>Add Todo</button>
+      <button type='submit' style={styles.button} >Add Todo</button>
     </form>
   )
 }

@@ -5,7 +5,7 @@ import Context from '../Context'
 const styles = {
   li: {
     display: 'flex',
-    width: '80%',
+    width: '60%',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '.5rem 1rem',

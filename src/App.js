@@ -7,9 +7,7 @@ import AddTodo from './Todo/AddTodo'
 function App() {
 
   const [todos, setTodos] = useState([
-    {id: 1, done: false, title: 'qweq'},
-    {id: 2, done: false, title: 'qweq'},
-    {id: 3, done: false, title: 'qweq'}
+    {id: 1, done: false, title: 'Example'},
   ])
 
   function toggleTodo(id) {
