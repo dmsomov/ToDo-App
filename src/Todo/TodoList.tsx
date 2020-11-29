@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
 
-const styles = {
+// interface styleTypes {
+//   display: string,
+
+// }
+
+const styles: { ul: object} = {
   ul: {
     display: 'flex',
     flexDirection: 'column',
@@ -13,7 +18,13 @@ const styles = {
   }
 }
 
-function TodoList(props) {
+interface TodoListProp {
+  todos: any[],
+  onToggle: (...args: any[]) => any
+}
+
+// function TodoList(props: { todos: any[]; onToggle: (...args: any[]) => any }) {
+const TodoList: React.FC<TodoListProp> = props => {
   return (
     <ul style={styles.ul}>
       {props.todos.map( (todo, ind) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const styles = {
+const styles: { form: object, button: object} = {
   form: {
     display: 'flex',
     justifyContent: 'center',
@@ -17,14 +17,14 @@ const styles = {
   }
 }
 
-function AddTodo({ createTodo }) {
+function AddTodo({ createTodo }: { createTodo: any }) {
   const [value, setValue] = useState('')
 
-  function changeValue(e) {
+  function changeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value)
   }
 
-  function submitValue(e) {
+  function submitValue(e: { preventDefault: () => void }) {
     e.preventDefault()
 
     if (value.trim()) {
