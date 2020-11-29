@@ -18,18 +18,24 @@ const styles = {
   }
 }
 
+type Todo = {
+  id: number, 
+  done: boolean, 
+  title: string
+}
+
 interface TodoItemProps {
-  todo: any,
+  todo: Todo,
   index: number,
-  onChange: (...args: any[]) => any
+  onChange: (...args: any) => void
 }
 
 // function TodoItem({ todo, index, onChange }: { todo: any, index: number, onChange: (...args: any[]) => any }) {
-const TodoItem: React.FC<TodoItemProps> = props => {
+const TodoItem: React.FC<TodoItemProps> = ({todo, onChange, index}) => {
   const { removeTodo } = useContext(Context)
   const classes = []
 
-  if (props.todo.done) {
+  if (todo.done) {
     classes.push('done')
   }
 
@@ -38,15 +44,15 @@ const TodoItem: React.FC<TodoItemProps> = props => {
     <span className={classes.join(' ')}>
       <input 
         type='checkbox'
-        checked ={props.todo.done}
+        checked ={todo.done}
         style={styles.input} 
-        onChange={() => props.onChange(props.todo.id)}
+        onChange={() => onChange(todo.id)}
       />
-      <strong>{props.index + 1}</strong>
+      <strong>{index + 1}</strong>
       &nbsp;
-      {props.todo.title}
+      {todo.title}
     </span>
-    <button onClick={() => removeTodo(props.todo.id)}>Done</button>
+    <button onClick={() => removeTodo(todo.id)}>Done</button>
     </li>
   )
 }

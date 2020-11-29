@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import TodoList from './Todo/TodoList'
 import Context from './Context'
 import AddTodo from './Todo/AddTodo'
+import { IntTodo } from './components/interfaces'
 
 const App: React.FC = () => {
 
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState<IntTodo[]>([
     {id: 1, done: false, title: 'Example'},
   ])
 
@@ -23,12 +24,18 @@ const App: React.FC = () => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  function addTodo(title: any) {
-    setTodos(todos.concat([{
-      title,
-      id: Date.now(),
-      done: false
-    }]))
+  function addTodo(title: string) {
+    // setTodos(todos.concat([{
+    //   title,
+    //   id: Date.now(),
+    //   done: false
+    // }]))
+    setTodos([...todos, 
+      {
+        title,
+        id: Date.now(),
+        done: false
+      }])
 
   }
 
