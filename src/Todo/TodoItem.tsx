@@ -52,7 +52,7 @@ const TodoItem: React.FC<TodoItemProps> = ({todo, onChange, index}) => {
       &nbsp;
       {todo.title}
     </span>
-    <button onClick={() => removeTodo(todo.id)}>Done</button>
+    <button onClick={removeTodo.bind(null, todo.id)}>Done</button>
     </li>
   )
 }

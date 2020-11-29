@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoList from './Todo/TodoList'
 import Context from './Context'
 import AddTodo from './Todo/AddTodo'
 import { IntTodo } from './components/interfaces'
 
+declare var confirm: (question: string) => boolean
+
 const App: React.FC = () => {
 
-  const [todos, setTodos] = useState<IntTodo[]>([
-    {id: 1, done: false, title: 'Example'},
-  ])
+  const [todos, setTodos] = useState<IntTodo[]>([])
+
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem('todos') || '[]') as IntTodo[]
+    setTodos(store)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
 
   function toggleTodo(id: number) {
     setTodos(
@@ -21,7 +30,8 @@ const App: React.FC = () => {
   }
   
   function removeTodo(id: number) {
-    setTodos(todos.filter(todo => todo.id !== id))
+    const shouldDelete = confirm('Are you sure you want to delete?')
+    if (shouldDelete) setTodos(todos.filter(todo => todo.id !== id))
   }
 
   function addTodo(title: string) {
